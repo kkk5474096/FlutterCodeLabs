@@ -34,7 +34,6 @@ class _RandomWordsState extends State<RandomWords> {
   final _biggerFont = const TextStyle(fontSize:18);
 
   Widget _buildSuggestions() {
-    logger.d(_suggestions[0]);
     return ListView.builder(
         padding: const EdgeInsets.all(16.0),
         itemBuilder: (context, i) {
