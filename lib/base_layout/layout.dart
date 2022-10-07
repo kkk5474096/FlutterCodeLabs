@@ -60,6 +60,11 @@ class LayoutApp extends StatelessWidget {
         ),
         body: Column(
           children: [
+            Image.asset(
+              'assets/images/lake.jpeg',
+              width: 600,
+              height: 240,
+            ),
             titleSection,
             buttonSection,
             textSection
