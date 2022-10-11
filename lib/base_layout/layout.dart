@@ -64,6 +64,7 @@ class LayoutApp extends StatelessWidget {
               'assets/images/lake.jpeg',
               width: 600,
               height: 240,
+              fit: BoxFit.cover,
             ),
             titleSection,
             buttonSection,
