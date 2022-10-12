@@ -1,25 +1,30 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 void main() {
   runApp(const AnimationApp());
 }
 
-class AnimationApp extends StatelessWidget {
+class AnimationApp extends StatefulWidget {
   const AnimationApp({super.key});
 
 
   @override
+  State<AnimationApp> createState() => _AnimationAppState();
+}
+
+class _AnimationAppState extends State<AnimationApp> {
+
+  @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        title: "Flutter Animation",
-        home: Scaffold(
-          appBar: AppBar(
-              title: const Text("Flutter Animation")
-          ),
-          body: const Center(
-            child: Text("hi"),
-          ),
-        )
+    return Center(
+      child: Container(
+        margin: const EdgeInsets.symmetric(vertical: 10),
+        height: 300,
+        width: 300,
+        child: const FlutterLogo(),
+      ),
     );
   }
 }
