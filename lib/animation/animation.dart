@@ -43,6 +43,14 @@ class _AnimationAppState extends State<AnimationApp> with SingleTickerProviderSt
     super.initState();
     controller = AnimationController(duration: const Duration(seconds: 2), vsync: this);
     animation = Tween<double>(begin: 0, end: 300).animate(controller);
+    animation.addStatusListener((status) {
+      if(status == AnimationStatus.completed) {
+        controller.reverse();
+      } else if (status == AnimationStatus.dismissed) {
+        controller.forward();
+      }
+      print("$status");
+    });
     // 1번째
     // animation = Tween<double>(begin: 0, end: 300).animate(controller)
     // ..addListener(() {
