@@ -11,19 +11,37 @@ class AnimationLogo extends AnimatedWidget {
   const AnimationLogo({super.key, required Animation<double> animation})
   : super(listenable: animation);
 
-
+  //4번째
+  static final _opacityTween = Tween<double>(begin: 0.1, end: 1);
+  static final _sizeTween = Tween<double>(begin: 0, end: 300);
   @override
   Widget build(BuildContext context) {
     final animation = listenable as Animation<double>;
     return Center(
-      child: Container(
-        margin: const EdgeInsets.symmetric(vertical: 10),
-        height: animation.value,
-        width:  animation.value,
-        child: const FlutterLogo()
-      ),
+      child: Opacity(
+        opacity: _opacityTween.evaluate(animation),
+        child: Container(
+            margin: const EdgeInsets.symmetric(vertical: 10),
+            height: _sizeTween.evaluate(animation),
+            width:  _sizeTween.evaluate(animation),
+            child: const FlutterLogo()
+        ),
+      )
     );
   }
+  // 2번째
+  // @override
+  // Widget build(BuildContext context) {
+  //   final animation = listenable as Animation<double>;
+  //   return Center(
+  //     child: Container(
+  //         margin: const EdgeInsets.symmetric(vertical: 10),
+  //         height: animation.value,
+  //         width:  animation.value,
+  //         child: const FlutterLogo()
+  //     ),
+  //   );
+  // }
 }
 
 class AnimationApp extends StatefulWidget {
@@ -42,7 +60,10 @@ class _AnimationAppState extends State<AnimationApp> with SingleTickerProviderSt
   void initState() {
     super.initState();
     controller = AnimationController(duration: const Duration(seconds: 2), vsync: this);
-    animation = Tween<double>(begin: 0, end: 300).animate(controller);
+    animation = CurvedAnimation(parent: controller, curve: Curves.easeIn);
+    // 1, 2, 3번째
+    // animation = Tween<double>(begin: 0, end: 300).animate(controller);
+    //-----------------------------------
     // 2번째
     // animation.addStatusListener((status) {
     //   if(status == AnimationStatus.completed) {
@@ -65,9 +86,10 @@ class _AnimationAppState extends State<AnimationApp> with SingleTickerProviderSt
 
   @override
   Widget build(BuildContext context) {
-    return GrowTransition(animation: animation, child: const LogoWidget());
-    // 2번째
-    // return AnimationLogo(animation: animation);
+    // 3번째
+    // return GrowTransition(animation: animation, child: const LogoWidget());
+    // 2번째, 4번째
+    return AnimationLogo(animation: animation);
     //--------------------------------
     // 1번째
     // return Center(
