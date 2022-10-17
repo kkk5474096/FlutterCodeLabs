@@ -12,15 +12,23 @@ class BasicApp extends StatelessWidget {
         appBar: AppBar(
           title: const Text("flutter basic"),
         ),
-        body: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
+        body: Row(
           children: [
-            Text("Flutter McFlutter",
-                style: Theme.of(context).textTheme.headline5),
-            const Text("Experienced App Developer")
+            const Padding(
+              padding: EdgeInsets.all(8),
+              child: Icon(Icons.account_circle, size: 50),
+            ),
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text("Flutter McFlutter",
+                    style: Theme.of(context).textTheme.headline5),
+                const Text("Experienced App Developer")
+              ],
+            ),
           ],
-        ),
+        )
       ),
     );
   }
